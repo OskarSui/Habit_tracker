@@ -28,6 +28,19 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# AUTHENTICATION_BACKENDS = [
+#     'social_core.backends.google.GoogleOAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+# ]
+#
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '854288019179-mru1o4shnejtoor5ki0lh4issrv4rhnf.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+#
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+#     'https://www.googleapis.com/auth/userinfo.email',
+#     'https://www.googleapis.com/auth/userinfo.profile',
+# ]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +61,9 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
 
+    # 'users.apps.UserConfig',
+    # 'social_django',
+    # 'oauth2_provider',
 
     'habits.apps.HabitsConfig',
 
@@ -149,8 +165,17 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication'
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+
+# AUTH_USER_MODEL = 'users.User'
+#
+# LOGIN_REDIRECT_URL = '/api/habit/'
+#
+# LOGOUT_REDIRECT_URL = '/api/login/'
+
